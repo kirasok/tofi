@@ -1565,18 +1565,10 @@ int main(int argc, char *argv[])
 				tofi.window.scale);
 	}
 
-	/* Grab the first (and only remaining) output from our list. */
-	struct wl_output *wl_output;
-	{
-		struct output_list_element *el;
-		el = wl_container_of(tofi.output_list.next, el, link);
-		wl_output = el->wl_output;
-	}
-
 	tofi.window.zwlr_layer_surface = zwlr_layer_shell_v1_get_layer_surface(
 			tofi.zwlr_layer_shell,
 			tofi.window.surface.wl_surface,
-			wl_output,
+			NULL,
 			ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY,
 			"launcher");
 	zwlr_layer_surface_v1_set_keyboard_interactivity(
